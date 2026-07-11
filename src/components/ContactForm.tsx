@@ -76,7 +76,7 @@ export default function ContactForm() {
             onChange={handleChange}
             required
             disabled={isLoading}
-            className="w-full px-6 py-3 border border-slate-300 bg-gray-50 focus:outline-none focus:border-slate-500 disabled:opacity-50"
+            className="w-full px-6 py-3 border border-slate-300 bg-white text-slate-900 text-base font-medium focus:outline-none focus:border-slate-500 focus:ring-2 focus:ring-blue-200 disabled:opacity-50 placeholder:text-slate-400 placeholder:font-semibold"
           />
 
           <input
@@ -87,7 +87,7 @@ export default function ContactForm() {
             onChange={handleChange}
             required
             disabled={isLoading}
-            className="w-full px-6 py-3 border border-amber-300 bg-yellow-50 focus:outline-none focus:border-amber-700 disabled:opacity-50"
+            className="w-full px-6 py-3 border border-amber-300 bg-amber-50 text-slate-900 text-base font-medium focus:outline-none focus:border-amber-700 focus:ring-2 focus:ring-amber-200 disabled:opacity-50 placeholder:text-amber-600 placeholder:font-semibold"
           />
 
           <input
@@ -97,7 +97,7 @@ export default function ContactForm() {
             value={formData.phoneNumber}
             onChange={handleChange}
             disabled={isLoading}
-            className="w-full px-6 py-3 border border-slate-300 bg-gray-50 focus:outline-none focus:border-slate-500 disabled:opacity-50"
+            className="w-full px-6 py-3 border border-slate-300 bg-white text-slate-900 text-base font-medium focus:outline-none focus:border-slate-500 focus:ring-2 focus:ring-blue-200 disabled:opacity-50 placeholder:text-slate-400 placeholder:font-semibold"
           />
 
           <textarea
@@ -108,7 +108,7 @@ export default function ContactForm() {
             required
             rows={6}
             disabled={isLoading}
-            className="w-full px-6 py-3 border border-slate-300 bg-gray-50 focus:outline-none focus:border-slate-500 resize-none disabled:opacity-50"
+            className="w-full px-6 py-3 border border-slate-300 bg-white text-slate-900 text-base font-medium focus:outline-none focus:border-slate-500 focus:ring-2 focus:ring-blue-200 resize-none disabled:opacity-50 placeholder:text-slate-400 placeholder:font-semibold"
           />
 
           <button
