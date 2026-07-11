@@ -2,61 +2,96 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { getAdminUsername, signOutAdmin } from '@/components/AdminAuthGuard';
+import { useRouter } from 'next/navigation';
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [adminUsername, setAdminUsername] = useState<string | null>(null);
+  const [hasHydrated, setHasHydrated] = useState(false);
+  const router = useRouter();
+  const isAdminLoggedIn = hasHydrated && Boolean(adminUsername);
+
+  useEffect(() => {
+    const updateAdminState = () => {
+      setAdminUsername(getAdminUsername());
+      setHasHydrated(true);
+    };
+
+    updateAdminState();
+    window.addEventListener('iamfoundationAdminAuthChanged', updateAdminState);
+
+    return () => {
+      window.removeEventListener('iamfoundationAdminAuthChanged', updateAdminState);
+    };
+  }, []);
+
+  const handleLogout = () => {
+    signOutAdmin();
+    router.push('/admin/login');
+  };
 
   return (
-    <header className="bg-gradient-to-r from-slate-50 to-blue-50 shadow-md sticky top-0 z-50 border-b border-blue-100">
-      <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
-        <div className="flex justify-between items-center">
-          {/* Logo */}
-          <Link href="/" className="flex items-center gap-3 hover:opacity-80 transition">
-            <Image 
-              src="/iamfoundation.jpeg" 
-              alt="Harvest Community Church" 
-              width={56} 
-              height={56}
-              className="h-14 w-auto"
-            />
-            <div>
-              <h1 className="text-lg font-bold text-slate-800">IAMFOUNDATION</h1>
-              <p className="text-xs text-blue-600 font-semibold">Growing God's Kingdom</p>
-            </div>
-          </Link>
-
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex gap-8">
-            <Link href="/" className="text-slate-700 hover:text-blue-600 font-semibold transition relative group">
-              HOME
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 group-hover:w-full transition-all"></span>
-            </Link>
-            <Link href="/about" className="text-slate-700 hover:text-blue-600 font-semibold transition relative group">
-              ABOUT
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 group-hover:w-full transition-all"></span>
-            </Link>
-            <Link href="/services" className="text-slate-700 hover:text-blue-600 font-semibold transition relative group">
-              OUR WORK
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 group-hover:w-full transition-all"></span>
-            </Link>
-            <Link href="/school" className="text-slate-700 hover:text-blue-600 font-semibold transition relative group">
-              SCHOOL
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 group-hover:w-full transition-all"></span>
-            </Link>
-            <Link href="/aeta-projects" className="text-slate-700 hover:text-blue-600 font-semibold transition relative group">
-              AETA PROJECTS
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 group-hover:w-full transition-all"></span>
-            </Link>
-            <Link href="/contact" className="text-slate-700 hover:text-blue-600 font-semibold transition relative group">
-              CONTACT
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 group-hover:w-full transition-all"></span>
+    <header className="sticky top-0 z-50 border-b border-slate-200/80 bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/80 shadow-sm">
+      <nav className="mx-auto flex max-w-7xl flex-col px-4 py-3 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            {/* Logo */}
+            <Link href="/" className="flex items-center gap-3 rounded-full pr-2 transition hover:opacity-90">
+              <Image 
+                src="/iamfoundation.jpeg" 
+                alt="Harvest Community Church" 
+                width={48} 
+                height={48}
+                className="h-12 w-12 rounded-full object-cover shadow-sm"
+              />
+              <div className="leading-tight">
+                <h1 className="text-base font-bold tracking-[0.16em] text-slate-800">IAMFOUNDATION</h1>
+                <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-blue-600">Growing God's Kingdom</p>
+              </div>
             </Link>
           </div>
 
+          {/* Desktop Navigation */}
+          <div className="hidden items-center gap-6 lg:gap-8 md:flex">
+            <Link href="/" className="text-sm font-semibold tracking-wide text-slate-700 transition hover:text-blue-600 relative after:absolute after:bottom-[-6px] after:left-0 after:h-0.5 after:w-0 after:bg-blue-600 after:transition-all hover:after:w-full">
+              HOME
+            </Link>
+            <Link href="/about" className="text-sm font-semibold tracking-wide text-slate-700 transition hover:text-blue-600 relative after:absolute after:bottom-[-6px] after:left-0 after:h-0.5 after:w-0 after:bg-blue-600 after:transition-all hover:after:w-full">
+              ABOUT
+            </Link>
+            <Link href="/services" className="text-sm font-semibold tracking-wide text-slate-700 transition hover:text-blue-600 relative after:absolute after:bottom-[-6px] after:left-0 after:h-0.5 after:w-0 after:bg-blue-600 after:transition-all hover:after:w-full">
+              OUR WORK
+            </Link>
+            <Link href="/school" className="text-sm font-semibold tracking-wide text-slate-700 transition hover:text-blue-600 relative after:absolute after:bottom-[-6px] after:left-0 after:h-0.5 after:w-0 after:bg-blue-600 after:transition-all hover:after:w-full">
+              SCHOOL
+            </Link>
+            <Link href="/aeta-projects" className="text-sm font-semibold tracking-wide text-slate-700 transition hover:text-blue-600 relative after:absolute after:bottom-[-6px] after:left-0 after:h-0.5 after:w-0 after:bg-blue-600 after:transition-all hover:after:w-full">
+              AETA PROJECTS
+            </Link>
+            <Link href="/contact" className="text-sm font-semibold tracking-wide text-slate-700 transition hover:text-blue-600 relative after:absolute after:bottom-[-6px] after:left-0 after:h-0.5 after:w-0 after:bg-blue-600 after:transition-all hover:after:w-full">
+              CONTACT
+            </Link>
+            {isAdminLoggedIn ? (
+              <Link href="/admin" className="text-sm font-semibold tracking-wide text-slate-700 transition hover:text-blue-600 relative after:absolute after:bottom-[-6px] after:left-0 after:h-0.5 after:w-0 after:bg-blue-600 after:transition-all hover:after:w-full">
+                ADMIN ({adminUsername})
+              </Link>
+            ) : null}
+          </div>
+
           {/* Donate Button */}
-          <div className="hidden md:flex">
-            <button className="bg-gradient-to-r from-blue-600 to-blue-700 text-white px-7 py-2.5 font-bold hover:shadow-lg hover:scale-105 transition-all rounded-lg">
+          <div className="hidden items-center gap-3 md:flex">
+            {isAdminLoggedIn ? (
+              <button
+                type="button"
+                onClick={handleLogout}
+                className="rounded-full border border-slate-300 bg-white px-4 py-2 text-sm font-semibold text-slate-700 transition hover:bg-slate-100"
+              >
+                LOG OUT
+              </button>
+            ) : null}
+            <button className="rounded-full bg-gradient-to-r from-blue-600 to-blue-700 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:shadow-md hover:scale-[1.02]">
               DONATE
             </button>
           </div>
@@ -64,7 +99,7 @@ export default function Header() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="md:hidden p-2"
+            className="rounded-full border border-slate-200 p-2 text-slate-700 shadow-sm md:hidden"
           >
             <svg
               className="w-6 h-6"
@@ -84,26 +119,40 @@ export default function Header() {
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <div className="md:hidden mt-4 pb-4 space-y-3 border-t border-blue-100 pt-4 bg-gradient-to-b from-transparent to-blue-50">
-            <Link href="/" className="block text-slate-700 hover:text-blue-600 font-semibold py-2 px-3 rounded hover:bg-blue-50 transition">
+          <div className="mt-4 space-y-2 border-t border-slate-200 pt-4 md:hidden">
+            <Link href="/" className="block rounded-xl px-3 py-2 text-sm font-semibold text-slate-700 transition hover:bg-blue-50 hover:text-blue-600">
               HOME
             </Link>
-            <Link href="/about" className="block text-slate-700 hover:text-blue-600 font-semibold py-2 px-3 rounded hover:bg-blue-50 transition">
+            <Link href="/about" className="block rounded-xl px-3 py-2 text-sm font-semibold text-slate-700 transition hover:bg-blue-50 hover:text-blue-600">
               ABOUT
             </Link>
-            <Link href="/services" className="block text-slate-700 hover:text-blue-600 font-semibold py-2 px-3 rounded hover:bg-blue-50 transition">
+            <Link href="/services" className="block rounded-xl px-3 py-2 text-sm font-semibold text-slate-700 transition hover:bg-blue-50 hover:text-blue-600">
               OUR WORK
             </Link>
-            <Link href="/school" className="block text-slate-700 hover:text-blue-600 font-semibold py-2 px-3 rounded hover:bg-blue-50 transition">
+            <Link href="/school" className="block rounded-xl px-3 py-2 text-sm font-semibold text-slate-700 transition hover:bg-blue-50 hover:text-blue-600">
               SCHOOL
             </Link>
-            <Link href="/aeta-projects" className="block text-slate-700 hover:text-blue-600 font-semibold py-2 px-3 rounded hover:bg-blue-50 transition">
+            <Link href="/aeta-projects" className="block rounded-xl px-3 py-2 text-sm font-semibold text-slate-700 transition hover:bg-blue-50 hover:text-blue-600">
               AETA PROJECTS
             </Link>
-            <Link href="/contact" className="block text-slate-700 hover:text-blue-600 font-semibold py-2 px-3 rounded hover:bg-blue-50 transition">
+            <Link href="/contact" className="block rounded-xl px-3 py-2 text-sm font-semibold text-slate-700 transition hover:bg-blue-50 hover:text-blue-600">
               CONTACT
             </Link>
-            <button className="w-full bg-gradient-to-r from-blue-600 to-blue-700 text-white px-6 py-2.5 font-bold hover:shadow-lg transition rounded-lg">
+            {isAdminLoggedIn ? (
+              <>
+                <Link href="/admin" className="block rounded-xl px-3 py-2 text-sm font-semibold text-slate-700 transition hover:bg-blue-50 hover:text-blue-600">
+                  ADMIN ({adminUsername})
+                </Link>
+                <button
+                  type="button"
+                  onClick={handleLogout}
+                  className="mt-2 w-full rounded-full border border-slate-300 bg-white px-4 py-2.5 text-sm font-semibold text-slate-700 transition hover:bg-slate-100"
+                >
+                  LOG OUT
+                </button>
+              </>
+            ) : null}
+            <button className="mt-2 w-full rounded-full bg-gradient-to-r from-blue-600 to-blue-700 px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:shadow-md">
               DONATE
             </button>
           </div>
