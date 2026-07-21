@@ -40,7 +40,7 @@ Located in `public/` directory:
 | **Harves Church Logo.png** | Header component branding (primary logo) | PNG Logo |
 | **photo-collage.png** | Contact page hero section background | Background Image |
 | **1.jpg** | Unused (available for future enhancement) | Image |
-| **iamfoundation.jpeg** | Unused (potentially partner branding) | Image |
+| **iamfoundation.jpeg** | Unused (potentially partner branding) — referenced as IM Foundation asset | Image |
 | **next.svg** | Vercel Next.js default (unused in prod) | SVG |
 | **vercel.svg** | Vercel default (unused in prod) | SVG |
 | **file.svg** | Unused default asset | SVG |

@@ -3,8 +3,8 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 
-const STORAGE_KEY = 'iamfoundationAdminAuth';
-const COOKIE_NAME = 'iamfoundationAdminAuth';
+const STORAGE_KEY = 'imfoundationAdminAuth';
+const COOKIE_NAME = 'imfoundationAdminAuth';
 
 export interface SignedAdminState {
   username: string;
@@ -40,7 +40,7 @@ export function signInAdmin(username: string) {
     const payload = JSON.stringify({ username });
     window.localStorage.setItem(STORAGE_KEY, payload);
     setAuthCookie(payload);
-    window.dispatchEvent(new Event('iamfoundationAdminAuthChanged'));
+    window.dispatchEvent(new Event('imfoundationAdminAuthChanged'));
   }
 }
 
@@ -48,7 +48,7 @@ export function signOutAdmin() {
   if (typeof window !== 'undefined') {
     window.localStorage.removeItem(STORAGE_KEY);
     clearAuthCookie();
-    window.dispatchEvent(new Event('iamfoundationAdminAuthChanged'));
+    window.dispatchEvent(new Event('imfoundationAdminAuthChanged'));
   }
 }
 
@@ -114,10 +114,10 @@ export default function AdminAuthGuard({ children }: { children: React.ReactNode
     };
 
     syncAuthState();
-    window.addEventListener('iamfoundationAdminAuthChanged', syncAuthState);
+    window.addEventListener('imfoundationAdminAuthChanged', syncAuthState);
 
     return () => {
-      window.removeEventListener('iamfoundationAdminAuthChanged', syncAuthState);
+      window.removeEventListener('imfoundationAdminAuthChanged', syncAuthState);
     };
   }, [router]);
 

@@ -80,7 +80,7 @@ export default function Footer() {
         {/* Bottom */}
         <div className="border-t border-slate-600 pt-8">
           <p className="text-center text-slate-400 text-sm">
-            © {currentYear} IAmFoundation. A non-profit organization 501(c)(3)
+            © {currentYear} IM Foundation. A non-profit organization 501(c)(3)
           </p>
           <p className="text-center text-slate-500 text-xs mt-2">All Rights Reserved</p>
         </div>
