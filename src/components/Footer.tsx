@@ -14,14 +14,14 @@ export default function Footer() {
           <div className="flex flex-col items-start gap-4">
             <Link href="/" className="flex items-center gap-3 hover:opacity-80 transition">
               <Image 
-                src="/iamfoundation.jpeg" 
-                alt="IAmFoundation" 
+                  src="/iamfoundation.jpeg" 
+                  alt="IM Foundation" 
                 width={56} 
                 height={56}
                 className="h-14 w-auto"
               />
               <div>
-                <h3 className="text-xl font-bold text-white">IAMFOUNDATION</h3>
+                  <h3 className="text-xl font-bold text-white">IM FOUNDATION</h3>
                 <p className="text-xs text-blue-300 font-semibold">Growing God's Kingdom</p>
               </div>
             </Link>
