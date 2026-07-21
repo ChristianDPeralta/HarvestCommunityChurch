@@ -3,7 +3,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import { Project, projects as initialProjects } from '@/data/projects';
 
-const STORAGE_KEY = 'iamfoundationProjectDrafts';
+const STORAGE_KEY = 'imfoundationProjectDrafts';
 
 function normalizeGallery(value: string) {
   return value

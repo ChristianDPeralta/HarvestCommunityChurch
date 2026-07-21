@@ -20,10 +20,10 @@ export default function Header() {
     };
 
     updateAdminState();
-    window.addEventListener('iamfoundationAdminAuthChanged', updateAdminState);
+    window.addEventListener('imfoundationAdminAuthChanged', updateAdminState);
 
     return () => {
-      window.removeEventListener('iamfoundationAdminAuthChanged', updateAdminState);
+      window.removeEventListener('imfoundationAdminAuthChanged', updateAdminState);
     };
   }, []);
 
