@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "IM Foundation",
+  title: "Harvest Community Church",
   description: "Growing God's Kingdom - Christian Outreach & Community Support Organization",
 };
 
