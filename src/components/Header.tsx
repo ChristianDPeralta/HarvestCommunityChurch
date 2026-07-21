@@ -41,13 +41,13 @@ export default function Header() {
             <Link href="/" className="flex items-center gap-3 rounded-full pr-2 transition hover:opacity-90">
               <Image 
                 src="/iamfoundation.jpeg" 
-                alt="IM Foundation" 
+                alt="Harvest Community Church" 
                 width={48} 
                 height={48}
                 className="h-12 w-12 rounded-full object-cover shadow-sm"
               />
               <div className="leading-tight">
-                <h1 className="text-base font-bold tracking-[0.16em] text-slate-800">IM FOUNDATION</h1>
+                <h1 className="text-base font-bold tracking-[0.16em] text-slate-800">IAMFOUNDATION</h1>
                 <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-blue-600">Growing God's Kingdom</p>
               </div>
             </Link>
