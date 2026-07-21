@@ -47,7 +47,7 @@ export default function AdminLoginForm() {
       <div className="w-full max-w-2xl rounded-3xl border border-slate-200 bg-white/95 p-10 shadow-xl shadow-slate-200/80 backdrop-blur-sm">
         <div className="mb-8 text-center">
           <p className="text-sm uppercase tracking-[0.3em] text-blue-600">Admin access</p>
-          <h1 className="mt-4 text-3xl font-bold tracking-tight text-slate-900">IAmFoundation Project Dashboard</h1>
+          <h1 className="mt-4 text-3xl font-bold tracking-tight text-slate-900">IM Foundation Project Dashboard</h1>
           <p className="mt-3 text-slate-600">Enter your admin username and password to manage AETA projects and editor access.</p>
         </div>
 
