@@ -10,28 +10,28 @@ export type AdminContact = {
 
 export const adminContacts: AdminContact[] = [
   {
-    id: 'roger',
-    name: 'Roger Catalan',
-    role: 'Primary Contact',
-    email: 'roger@example.org',
+    id: 'joseph',
+    name: 'Joseph Vincent Hue Catalan',
+    role: 'Pastor',
+    email: 'joseph@example.org',
     phone: '+63 917-000-0001',
     socials: [
-      { platform: 'Facebook', url: 'https://facebook.com/roger.catalan' },
-      { platform: 'Instagram', url: 'https://instagram.com/roger.catalan' },
+      { platform: 'Facebook', url: 'https://facebook.com/joseph.catalan' },
+      { platform: 'Instagram', url: 'https://instagram.com/joseph.catalan' },
     ],
-    note: 'Primary contact for donation coordination and general inquiries.',
+    note: 'Pastor and primary contact for donation coordination and pastoral inquiries.',
   },
   {
-    id: 'maria',
-    name: 'Maria Santos',
-    role: 'Finance Lead',
-    email: 'maria@example.org',
+    id: 'jocelyn',
+    name: 'Jocelyn Perez',
+    role: 'Teacher',
+    email: 'jocelyn@example.org',
     phone: '+63 917-000-0002',
     socials: [
-      { platform: 'Facebook', url: 'https://facebook.com/maria.santos' },
-      { platform: 'LinkedIn', url: 'https://linkedin.com/in/maria-santos' },
+      { platform: 'Facebook', url: 'https://facebook.com/jocelyn.perez' },
+      { platform: 'LinkedIn', url: 'https://linkedin.com/in/jocelyn-perez' },
     ],
-    note: 'Handles donation receipts and reconciliation.',
+    note: 'Teacher and community outreach coordinator.',
   },
   {
     id: 'john',
