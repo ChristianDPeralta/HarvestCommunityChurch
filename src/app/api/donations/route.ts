@@ -30,42 +30,9 @@ function writeDonations(data: any[]) {
 }
 
 export async function GET() {
-  const data = readDonations();
-  return NextResponse.json(data);
+  return NextResponse.json({ error: 'Donation recording has been disabled. Please contact an administrator via the Donate page.' }, { status: 410 });
 }
 
-export async function POST(request: Request) {
-  try {
-    const body = await request.json();
-    const { name, email, amount, method, reference, note } = body;
-
-    if (!amount || !method) {
-      return NextResponse.json({ error: 'Missing required fields' }, { status: 400 });
-    }
-
-    const donations = readDonations();
-    const id = Date.now().toString();
-    const record = {
-      id,
-      name: name || 'Anonymous',
-      email: email || null,
-      amount: Number(amount),
-      method,
-      reference: reference || null,
-      note: note || null,
-      createdAt: new Date().toISOString(),
-    };
-
-    donations.unshift(record);
-
-    const ok = writeDonations(donations);
-    if (!ok) {
-      return NextResponse.json({ error: 'Failed to save donation' }, { status: 500 });
-    }
-
-    return NextResponse.json(record, { status: 201 });
-  } catch (err) {
-    console.error('Error handling donation POST', err);
-    return NextResponse.json({ error: 'Invalid request' }, { status: 400 });
-  }
+export async function POST() {
+  return NextResponse.json({ error: 'Donation recording has been disabled. Please contact an administrator via the Donate page.' }, { status: 410 });
 }
