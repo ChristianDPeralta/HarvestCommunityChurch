@@ -1,4 +1,5 @@
 import ContactForm from "@/components/ContactForm";
+import { adminContacts } from '@/data/adminContacts';
 
 export default function Contact() {
   return (
