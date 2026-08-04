@@ -1,3 +1,5 @@
+'use client';
+
 import AdminAuthGuard from '@/components/AdminAuthGuard';
 import { useEffect, useState } from 'react';
 
