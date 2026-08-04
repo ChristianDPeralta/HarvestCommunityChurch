@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { donationMethods } from '@/data/donationMethods';
+import { adminContacts } from '@/data/adminContacts';
 
 export default function DonatePage() {
   const [name, setName] = useState('');
@@ -57,6 +58,26 @@ export default function DonatePage() {
                 <li key={m.id} className="whitespace-pre-line">{m.label}: {m.details}</li>
               ))}
             </ul>
+
+            <div className="mt-6">
+              <h4 className="font-semibold text-slate-800 mb-3">Contact an administrator directly</h4>
+              <p className="text-sm text-slate-600 mb-3">If you prefer to contact an admin to arrange payment, reach out via the channels below.</p>
+              <ul className="space-y-4">
+                {adminContacts.map((a) => (
+                  <li key={a.id} className="rounded-2xl border p-3">
+                    <p className="font-semibold">{a.name} {a.role ? `— ${a.role}` : ''}</p>
+                    {a.email ? <p className="text-sm">Email: <a className="text-blue-600 hover:underline" href={`mailto:${a.email}`}>{a.email}</a></p> : null}
+                    {a.phone ? <p className="text-sm">Phone: <a className="text-blue-600 hover:underline" href={`tel:${a.phone}`}>{a.phone}</a></p> : null}
+                    {a.socials?.length ? (
+                      <p className="text-sm">{a.socials.map((s) => (
+                        <a key={s.platform} className="text-blue-600 hover:underline mr-3" href={s.url} target="_blank" rel="noreferrer">{s.platform}</a>
+                      ))}</p>
+                    ) : null}
+                    {a.note ? <p className="text-xs text-slate-500 mt-2">{a.note}</p> : null}
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
 
           <div>
