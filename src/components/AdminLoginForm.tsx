@@ -47,8 +47,8 @@ export default function AdminLoginForm() {
       <div className="w-full max-w-2xl rounded-3xl border border-slate-200 bg-white/95 p-10 shadow-xl shadow-slate-200/80 backdrop-blur-sm">
         <div className="mb-8 text-center">
           <p className="text-sm uppercase tracking-[0.3em] text-blue-600">Admin access</p>
-          <h1 className="mt-4 text-3xl font-bold tracking-tight text-slate-900">IM Foundation Project Dashboard</h1>
-          <p className="mt-3 text-slate-600">Enter your admin username and password to manage AETA projects and editor access.</p>
+          <h1 className="mt-4 text-3xl font-bold tracking-tight text-slate-900">I AM FOUNDATION Administration</h1>
+          <p className="mt-3 text-slate-600">Sign in with authorized credentials to manage project updates for the foundation website.</p>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-6">
@@ -93,16 +93,16 @@ export default function AdminLoginForm() {
             disabled={isSubmitting}
             className="w-full rounded-3xl bg-gradient-to-r from-blue-600 to-blue-700 px-6 py-4 text-base font-semibold text-white shadow-lg shadow-blue-500/20 transition hover:opacity-95 disabled:cursor-not-allowed disabled:opacity-70"
           >
-            {isSubmitting ? 'Signing in…' : 'Sign in securely'}
+            {isSubmitting ? 'Signing in…' : 'Sign in'}
           </button>
         </form>
 
         <div className="mt-8 rounded-3xl border border-slate-200 bg-slate-50 p-6 text-sm text-slate-600">
-          <p className="font-semibold text-slate-800">Admin notes</p>
+          <p className="font-semibold text-slate-800">Administration reminders</p>
           <ul className="mt-3 space-y-2 list-disc pl-5">
             <li>Only authorized administrators should use this page.</li>
-            <li>For production, set <code className="rounded bg-slate-100 px-1.5 py-0.5 font-mono">NEXT_PUBLIC_ADMIN_PASSWORD</code> in your environment.</li>
-            <li>Your changes are managed securely within the admin workflow.</li>
+            <li>Store credentials securely and avoid sharing login access through chat or email.</li>
+            <li>Set <code className="rounded bg-slate-100 px-1.5 py-0.5 font-mono">NEXT_PUBLIC_ADMIN_PASSWORD</code> in production and rotate it periodically.</li>
           </ul>
         </div>
       </div>

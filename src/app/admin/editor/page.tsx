@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import AdminAuthGuard, { signOutAdmin } from '@/components/AdminAuthGuard';
 import AdminProjectEditor from '@/components/AdminProjectEditor';
@@ -18,16 +19,24 @@ export default function AdminEditorPage() {
         <div className="bg-gradient-to-r from-slate-800 to-slate-900 text-white py-8">
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
             <div>
-              <h1 className="text-4xl font-bold mb-2">Admin Content Editor</h1>
-              <p className="text-slate-300">Use this hidden admin page to upload images and manage AETA projects securely.</p>
+              <h1 className="text-4xl font-bold mb-2">Project Content Editor</h1>
+              <p className="text-slate-300">Update project content and media before publishing changes to the website.</p>
             </div>
-            <button
-              type="button"
-              onClick={handleLogout}
-              className="rounded-3xl bg-white/10 px-5 py-3 text-sm font-semibold text-white transition hover:bg-white/20"
-            >
-              Log out
-            </button>
+            <div className="flex flex-wrap items-center gap-3">
+              <Link
+                href="/admin/projects"
+                className="rounded-3xl border border-white/20 bg-white/10 px-5 py-3 text-sm font-semibold text-white transition hover:bg-white/20"
+              >
+                View published projects
+              </Link>
+              <button
+                type="button"
+                onClick={handleLogout}
+                className="rounded-3xl bg-white/10 px-5 py-3 text-sm font-semibold text-white transition hover:bg-white/20"
+              >
+                Sign out
+              </button>
+            </div>
           </div>
         </div>
 
