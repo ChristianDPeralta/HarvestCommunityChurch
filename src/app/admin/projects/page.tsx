@@ -19,15 +19,15 @@ export default function AdminProjects() {
         <div className="bg-gradient-to-r from-slate-800 to-slate-900 text-white py-8">
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
             <div>
-              <h1 className="text-4xl font-bold mb-2">Admin Project Summary</h1>
-              <p className="text-slate-300">This hidden admin page shows the published AETA project list and links to the secure editor.</p>
+              <h1 className="text-4xl font-bold mb-2">Published Projects Overview</h1>
+              <p className="text-slate-300">Review the live AETA project listing and open the editor for updates.</p>
             </div>
             <button
               type="button"
               onClick={handleLogout}
               className="rounded-3xl bg-white/10 px-5 py-3 text-sm font-semibold text-white transition hover:bg-white/20"
             >
-              Log out
+              Sign out
             </button>
           </div>
         </div>
@@ -54,15 +54,15 @@ export default function AdminProjects() {
             <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
               <Link
                 href="/admin/editor"
-                className="inline-block bg-gradient-to-r from-blue-600 to-blue-700 text-white px-6 py-3 font-bold rounded-lg hover:shadow-lg transition"
+                className="inline-block rounded-3xl bg-gradient-to-r from-blue-600 to-blue-700 px-6 py-3 text-sm font-bold text-white transition hover:shadow-lg"
               >
-                Open secure editor →
+                Open content editor
               </Link>
               <Link
-                href="/aeta-projects"
+                href="/admin"
                 className="text-blue-600 hover:text-blue-700 font-semibold hover:underline"
               >
-                View live AETA projects
+                Return to admin dashboard
               </Link>
             </div>
           </div>

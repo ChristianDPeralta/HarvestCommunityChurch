@@ -15,13 +15,13 @@ export default function Footer() {
             <Link href="/" className="flex items-center gap-3 hover:opacity-80 transition">
               <Image 
                   src="/iamfoundation.jpeg" 
-                  alt="IM Foundation" 
+                  alt="I AM FOUNDATION" 
                 width={56} 
                 height={56}
                 className="h-14 w-auto"
               />
               <div>
-                  <h3 className="text-xl font-bold text-white">IM FOUNDATION</h3>
+                  <h3 className="text-xl font-bold text-white">I AM FOUNDATION</h3>
                 <p className="text-xs text-blue-300 font-semibold">Growing God's Kingdom</p>
               </div>
             </Link>
@@ -80,7 +80,7 @@ export default function Footer() {
         {/* Bottom */}
         <div className="border-t border-slate-600 pt-8">
           <p className="text-center text-slate-400 text-sm">
-            © {currentYear} IM Foundation. A non-profit organization 501(c)(3)
+            © {currentYear} I AM FOUNDATION. A non-profit organization 501(c)(3)
           </p>
           <p className="text-center text-slate-500 text-xs mt-2">All Rights Reserved</p>
         </div>
