@@ -91,9 +91,9 @@ export default function Header() {
                 LOG OUT
               </button>
             ) : null}
-            <button className="rounded-full bg-gradient-to-r from-blue-600 to-blue-700 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:shadow-md hover:scale-[1.02]">
-              DONATE
-            </button>
+            <Link href="/donate" className="rounded-full bg-gradient-to-r from-blue-600 to-blue-700 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:shadow-md hover:scale-[1.02]">
+              Donate
+            </Link>
           </div>
 
           {/* Mobile Menu Button */}
@@ -152,9 +152,9 @@ export default function Header() {
                 </button>
               </>
             ) : null}
-            <button className="mt-2 w-full rounded-full bg-gradient-to-r from-blue-600 to-blue-700 px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:shadow-md">
-              DONATE
-            </button>
+            <Link href="/donate" className="mt-2 w-full rounded-full bg-gradient-to-r from-blue-600 to-blue-700 px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:shadow-md">
+              Donate
+            </Link>
           </div>
         )}
       </nav>
