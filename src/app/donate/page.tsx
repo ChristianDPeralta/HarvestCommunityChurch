@@ -12,13 +12,26 @@ export default function DonatePage() {
             <div key={a.id} className="rounded-2xl border p-4">
               <p className="font-semibold text-slate-900">{a.name} {a.role ? `— ${a.role}` : ''}</p>
               <div className="mt-2 text-sm text-slate-700">
-                {a.email ? <p>Email: <a className="text-blue-600 hover:underline" href={`mailto:${a.email}`}>{a.email}</a></p> : null}
-                {a.phone ? <p>Phone: <a className="text-blue-600 hover:underline" href={`tel:${a.phone}`}>{a.phone}</a></p> : null}
+                <div className="flex flex-col gap-1">
+                  {a.email ? <p className="text-sm">Email: <a className="text-blue-600 hover:underline" href={`mailto:${a.email}`}>{a.email}</a></p> : null}
+                  {a.phone ? <p className="text-sm">Phone: <a className="text-blue-600 hover:underline" href={`tel:${a.phone}`}>{a.phone}</a></p> : null}
+                </div>
+
                 {a.socials?.length ? (
-                  <p className="mt-2">{a.socials.map((s) => (
+                  <p className="text-sm mt-2">{a.socials.map((s) => (
                     <a key={s.platform} className="text-blue-600 hover:underline mr-3" href={s.url} target="_blank" rel="noreferrer">{s.platform}</a>
                   ))}</p>
                 ) : null}
+
+                <div className="mt-3 flex flex-wrap gap-3">
+                  {a.email ? (
+                    <a href={`mailto:${a.email}`} className="inline-flex items-center rounded-2xl bg-blue-600 px-3 py-1.5 text-white text-sm">Message</a>
+                  ) : null}
+                  {a.phone ? (
+                    <a href={`tel:${a.phone}`} className="inline-flex items-center rounded-2xl border border-slate-200 px-3 py-1.5 text-sm text-slate-700">Call</a>
+                  ) : null}
+                </div>
+
                 {a.note ? <p className="text-xs text-slate-500 mt-2">{a.note}</p> : null}
               </div>
             </div>
