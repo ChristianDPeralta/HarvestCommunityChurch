@@ -1,26 +1,185 @@
 @import "tailwindcss";
 
 :root {
-  --background: #FAFAF8;
-  --foreground: #5A5A5A;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --background: #f8fafc;
+  --foreground: #0f172a;
+  --accent: #0b69c6;
+  --accent-600: #0b69c6;
+  --muted: #64748b;
+  --max-width: 1200px;
+  --radius-lg: 1rem;
+  --card-shadow: 0 8px 24px rgba(16,24,40,0.06);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #2A2A28;
-    --foreground: #E8E8E6;
+    --background: #0b1220;
+    --foreground: #e6eef8;
   }
+}
+
+html, body, #__next {
+  height: 100%;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist-sans, Inter), ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.6;
 }
+
+/* Base typography */
+html { font-size: 16px; }
+body { font-size: 15px; }
+h1, h2, h3, h4 { color: inherit; }
+h1 { font-size: 2.25rem; line-height: 1.05; }
+h2 { font-size: 1.5rem; }
+
+/* Buttons - simplified, consistent (defined later) */
+
+/* Light, professional page background */
+html, body, #__next {
+  background: #f8fafc !important;
+  color: #0f172a !important;
+}
+
+/* Ensure sections remain neutral */
+section, main {
+  background: transparent;
+}
+
+a { color: inherit; }
+
+/* Improve default container spacing for the site */
+main { padding-top: 1.25rem; padding-bottom: 1.25rem; }
+/* Headings and typography */
+h1, h2, h3, h4 { color: inherit; }
+h1 { font-size: 2.25rem; line-height: 1.05; }
+h2 { font-size: 1.75rem; }
+
+/* Body text helpers */
+.lead { font-size: 1.125rem; color: var(--muted); }
+.muted { color: var(--muted); }
+
+/* Make card content explicit to avoid low-contrast inheritance */
+.card-soft {
+  border-radius: var(--radius-lg);
+  background: white;
+  border: 1px solid rgba(15,23,42,0.06);
+  padding: 1.5rem;
+  box-shadow: var(--card-shadow);
+}
+
+/* Hero/title system - consistent across pages */
+.page-hero-title {
+  @apply text-3xl md:text-4xl lg:text-5xl font-extrabold leading-tight text-white;
+  text-shadow: 0 16px 32px rgba(0,0,0,0.25);
+}
+.page-hero-subtitle {
+  @apply text-lg md:text-xl text-white max-w-2xl mx-auto;
+  font-weight: 500;
+  opacity: 0.95;
+  text-shadow: 0 12px 28px rgba(0,0,0,0.32);
+}
+.hero-section {
+  position: relative;
+}
+.hero-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  /* original darker overlay */
+  background: linear-gradient(180deg, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.65) 100%);
+  z-index: 0;
+}
+.hero-section > div {
+  position: relative;
+  z-index: 1;
+}
+
+/* Skip link for keyboard users */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+.skip-link:focus {
+  left: 1rem;
+  top: 1rem;
+  width: auto;
+  height: auto;
+  padding: 0.5rem 0.75rem;
+  background: white;
+  color: var(--foreground);
+  border-radius: 6px;
+  box-shadow: 0 6px 18px rgba(2,6,23,0.12);
+  z-index: 9999;
+}
+
+/* Buttons */
+.btn-primary {
+  @apply inline-flex items-center justify-center rounded-full bg-gradient-to-r from-blue-600 to-blue-700 text-white px-5 py-3 text-sm font-semibold shadow transition hover:shadow-md;
+}
+.btn-outline {
+  @apply inline-flex items-center justify-center rounded-full border border-slate-200 bg-white/5 px-5 py-3 text-sm font-semibold text-slate-900 transition hover:bg-white/10;
+}
+
+/* No hero-specific overrides for outline buttons; use default dark outline */
+/* Make outline buttons visible when placed over the dark hero */
+.hero-section .btn-outline {
+  color: #ffffff !important;
+  border-color: rgba(255,255,255,0.32) !important;
+  background: rgba(255,255,255,0.04) !important;
+}
+
+/* Make placeholders readable */
+::placeholder { color: #94a3b8; }
+
+/* Minimal safeguards: keep hero headings white and card text readable.
+   Avoid broad global overrides to prevent accidental color inversion.
+*/
+
+/* Utility for subtle containers */
+.card-soft {
+  border-radius: var(--radius-lg);
+  background: white;
+  border: 1px solid rgba(15,23,42,0.06);
+  padding: 1.5rem;
+  box-shadow: var(--card-shadow);
+}
+
+/* Utility: rounded large */
+.rounded-lg { border-radius: var(--radius-lg); }
+
+/* Improve link visibility */
+a { text-decoration: none; }
+a.link-accent { color: #0b69c6; font-weight: 600; }
+
+/* Accessible focus styles */
+:where(:focus-visible) {
+  outline: 3px solid rgba(11,105,198,0.18);
+  outline-offset: 3px;
+}
+
+/* Constrain wide containers */
+.container-max {
+  max-width: var(--max-width);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Header nav link style - use .nav-link for predictable control */
+.nav-link {
+  color: #0f172a;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+/* Ensure donate button in header remains white text */
+header#top .btn-primary { color: #ffffff !important; }

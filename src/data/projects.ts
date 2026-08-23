@@ -9,45 +9,112 @@ export interface Project {
   date: string;
 }
 
+const createMediaPaths = (year: string, files: string[]) =>
+  files.map((file) => `/AETA/Mapanuepe ${year}/${file}`);
+
+const mapanuepe2024Media = createMediaPaths('2024', [
+  '473188638_122185515674174447_2265702260936352799_n.jpg',
+  '473189155_122185515248174447_6313427090809449844_n.jpg',
+  '473191716_122185515932174447_7675549725106984159_n.jpg',
+  '473191938_122185515176174447_339961989301000917_n.jpg',
+  '473312491_122185515272174447_7563515543526794501_n.jpg',
+  '473414274_122185515866174447_8335061766478516267_n.jpg',
+  '473426130_122185515326174447_5930038888415386914_n.jpg',
+  '473427585_122185515704174447_7887007007404389510_n.jpg',
+  '473427783_122185515734174447_1181065667367944333_n.jpg',
+  '473450961_122185515836174447_3909975397470584615_n.jpg',
+  '473588695_122185515422174447_8569302226151522510_n.jpg',
+  '473589010_122185515476174447_5041311175421558895_n.jpg',
+  '473589828_122185515584174447_6026538796007796485_n.jpg',
+  '473591969_122185515440174447_497067289325030632_n.jpg',
+  '473631888_122185516034174447_5648809471373681498_n.jpg',
+  '473668644_122185515278174447_6985302555107086108_n.jpg',
+  '473747401_122185515338174447_8597455265181205286_n.jpg',
+  'Video1.mp4',
+  'video2.mp4',
+  'video3.mp4',
+]);
+
+const mapanuepe2025Media = createMediaPaths('2025', [
+  '597393957_122248474142174447_2373445633217669965_n.jpg',
+  '598295735_122248474412174447_6357915633820468955_n.jpg',
+  '598418595_122248466018174447_2504416579549548138_n.jpg',
+  '598516111_122248459868174447_4369521699834233217_n.jpg',
+  '598753026_122248457084174447_1942082766856075664_n.jpg',
+  '599945061_122248459604174447_2989817855538350056_n.jpg',
+  '599951203_122248460048174447_3510569980005112849_n.jpg',
+  '600258268_122248474454174447_236241866280223024_n.jpg',
+  '600290143_122248456418174447_674490239555768609_n.jpg',
+  '600332112_122248466042174447_7238011498990589115_n.jpg',
+  '600353239_122248460036174447_4048717315648052299_n.jpg',
+  '600402456_122248474232174447_5044843179877364147_n.jpg',
+  '602337591_122248474028174447_5685192649893488110_n.jpg',
+  '603848285_122248474418174447_6242951601282856514_n.jpg',
+  '603892548_122248473266174447_8946968410101770245_n.jpg',
+  '603907807_122248473326174447_7743412525547428612_n.jpg',
+  'video1.mp4',
+  'video2.mp4',
+  'video3.mp4',
+  'video4.mp4',
+]);
+
+const mapanuepe2026Media = createMediaPaths('2026', [
+  '649631449_122265284630174447_2090949882980613396_n.jpg',
+  '650761328_122265284486174447_7556209628842172521_n.jpg',
+  '651015687_122265284660174447_7186627345321015804_n.jpg',
+  '651195908_122265284684174447_6310574316848669332_n.jpg',
+  '651215506_122265284312174447_2649819813543034751_n.jpg',
+  '651277279_122265284324174447_1148724745370852667_n.jpg',
+  '651277287_122265284804174447_1172277264969605854_n.jpg',
+  '651344468_122265284156174447_2401153172850898999_n.jpg',
+  '651390256_122265284768174447_5593838984783649324_n.jpg',
+  '651410991_122265284006174447_5283909617515147277_n.jpg',
+  '651412800_122265284936174447_3178352841119814444_n.jpg',
+  '651665216_122265284354174447_4876511548521101531_n.jpg',
+  '651754793_122265284030174447_4572140031948885086_n.jpg',
+  '651798453_122265284474174447_9106776551780811227_n.jpg',
+  '651900384_122265284792174447_2928220738425885274_n.jpg',
+  '652451502_122265281150174447_8334779332110352636_n.jpg',
+  '652571022_122265282818174447_6188866441005236431_n.jpg',
+  '652853580_122265284648174447_6597363769530135493_n.jpg',
+  '652907261_122265284966174447_652698280846347564_n.jpg',
+  '653008976_122265284294174447_6735403758438121742_n.jpg',
+  '653477608_122265284606174447_3644047641076296546_n.jpg',
+  '653709467_122265284048174447_6967445633709447000_n.jpg',
+  '653711865_122265284534174447_2403714362353350050_n.jpg',
+  '654199775_122265284390174447_3328562870386126519_n.jpg',
+  '654213194_122265283328174447_4334737471176592127_n.jpg',
+]);
+
 export const projects: Project[] = [
   {
     id: 1,
-    title: "Educational Scholarship Program",
-    category: "Education",
-    summary: "Providing scholarships to 50+ Aeta students for quality education and future opportunities.",
-    description: "Through our Educational Scholarship Program, we have empowered over 50 Aeta students with access to quality education. These scholarships cover tuition, materials, and support services that enable young minds to pursue their dreams and become leaders in their communities.",
-    image: "/photo-collage.png",
-    gallery: ["/photo-collage.png", "/1.jpg", "/photo-collage.png"],
-    date: "2024-01-15"
+    title: "Mapanuepe 2024",
+    category: "AETA Outreach",
+    summary: "Photos from our 2024 Mapanuepe AETA outreach and community support activities.",
+    description: "The 2024 Mapanuepe collection captures ministry, fellowship, and support moments shared with the AETA community. These images document the early stages of our outreach work and the relationships built throughout the year.",
+    image: mapanuepe2024Media[0],
+    gallery: mapanuepe2024Media,
+    date: "2024-01-01"
   },
   {
     id: 2,
-    title: "Vocational Skills Training",
-    category: "Skills Training",
-    summary: "Teaching practical trades and entrepreneurship to create sustainable income for families.",
-    description: "Our Vocational Skills Training program equips individuals with practical knowledge in various trades including carpentry, agriculture, and small business management. Participants graduate with not just skills, but confidence and the tools to build sustainable livelihoods.",
-    image: "/1.jpg",
-    gallery: ["/1.jpg", "/photo-collage.png", "/1.jpg"],
-    date: "2024-02-20"
+    title: "Mapanuepe 2025",
+    category: "AETA Outreach",
+    summary: "Highlights from the 2025 Mapanuepe outreach, including continued community engagement.",
+    description: "The 2025 Mapanuepe gallery shows the continuation of our work with the AETA community through encouragement, service, and shared experiences. The photos reflect the growth of the project and the ongoing commitment to practical support.",
+    image: mapanuepe2025Media[0],
+    gallery: mapanuepe2025Media,
+    date: "2025-01-01"
   },
   {
     id: 3,
-    title: "Community Cooperative Initiative",
-    category: "Community Development",
-    summary: "Building cooperative enterprises that generate income while strengthening community bonds.",
-    description: "We have established community cooperatives that allow families to pool resources, share knowledge, and access markets together. These initiatives have doubled household incomes and created a strong support network within the Aeta communities.",
-    image: "/photo-collage.png",
-    gallery: ["/photo-collage.png", "/1.jpg", "/photo-collage.png", "/1.jpg"],
-    date: "2024-03-10"
+    title: "Mapanuepe 2026",
+    category: "AETA Outreach",
+    summary: "Recent 2026 Mapanuepe photos from the latest AETA outreach and service efforts.",
+    description: "The 2026 Mapanuepe album brings together the newest images from our ongoing AETA outreach. It highlights continued service, fellowship, and encouragement as the project expands into another year of ministry.",
+    image: mapanuepe2026Media[0],
+    gallery: mapanuepe2026Media,
+    date: "2026-01-01"
   },
-  {
-    id: 4,
-    title: "Healthcare & Nutrition Support",
-    category: "Social Support",
-    summary: "Providing medical services and nutrition programs to ensure community wellbeing.",
-    description: "Health and nutrition are fundamental to breaking the cycle of poverty. Our program provides regular medical checkups, nutrition counseling, and emergency healthcare support to ensure every member of the community can live a healthy, productive life.",
-    image: "/1.jpg",
-    gallery: ["/1.jpg", "/photo-collage.png"],
-    date: "2024-04-05"
-  }
 ];

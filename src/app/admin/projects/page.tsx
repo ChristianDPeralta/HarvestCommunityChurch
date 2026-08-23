@@ -19,15 +19,15 @@ export default function AdminProjects() {
         <div className="bg-gradient-to-r from-slate-800 to-slate-900 text-white py-8">
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
             <div>
-              <h1 className="text-4xl font-bold mb-2">Published Projects Overview</h1>
-              <p className="text-slate-300">Review the live AETA project listing and open the editor for updates.</p>
+              <h1 className="text-3xl font-semibold mb-2">Admin Project Summary</h1>
+              <p className="text-white">This hidden admin page shows the published AETA project list and links to the secure editor.</p>
             </div>
             <button
               type="button"
               onClick={handleLogout}
               className="rounded-3xl bg-white/10 px-5 py-3 text-sm font-semibold text-white transition hover:bg-white/20"
             >
-              Sign out
+              Log out
             </button>
           </div>
         </div>
@@ -39,7 +39,7 @@ export default function AdminProjects() {
               <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
                 {projects.map((project) => (
                   <div key={project.id} className="rounded-3xl border border-slate-200 bg-white p-5 shadow-sm">
-                    <div className="mb-4 rounded-2xl bg-slate-100 p-4 text-sm text-slate-600">ID {project.id}</div>
+                    <div className="mb-4 rounded-2xl bg-slate-100 p-4 text-sm text-slate-700">ID {project.id}</div>
                     <h3 className="text-xl font-semibold text-slate-900">{project.title}</h3>
                     <p className="mt-2 text-slate-600 line-clamp-3">{project.summary}</p>
                     <div className="mt-4 flex flex-wrap gap-2">
@@ -54,15 +54,15 @@ export default function AdminProjects() {
             <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
               <Link
                 href="/admin/editor"
-                className="inline-block rounded-3xl bg-gradient-to-r from-blue-600 to-blue-700 px-6 py-3 text-sm font-bold text-white transition hover:shadow-lg"
+                className="btn-primary inline-block"
               >
-                Open content editor
+                Open secure editor →
               </Link>
               <Link
-                href="/admin"
+                href="/aeta-projects"
                 className="text-blue-600 hover:text-blue-700 font-semibold hover:underline"
               >
-                Return to admin dashboard
+                View live AETA projects
               </Link>
             </div>
           </div>

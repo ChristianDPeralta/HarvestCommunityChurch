@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "I AM FOUNDATION",
+  title: "I Am Foundation",
   description: "Growing God's Kingdom - Christian Outreach & Community Support Organization",
 };
 
@@ -29,9 +29,10 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased flex flex-col min-h-screen`}
       >
+        <a href="#main" className="skip-link">Skip to content</a>
         <Header />
-        <main className="flex-grow">
-          {children}
+        <main id="main" className="flex-grow">
+          <div className="container-max px-4 sm:px-6 lg:px-8">{children}</div>
         </main>
         <Footer />
       </body>

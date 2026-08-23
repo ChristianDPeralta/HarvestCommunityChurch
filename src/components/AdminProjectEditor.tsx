@@ -156,20 +156,20 @@ export default function AdminProjectEditor() {
           <div>
             <p className="text-sm font-semibold uppercase tracking-[0.3em] text-blue-600">Project management</p>
             <h2 className="mt-3 text-3xl font-bold text-slate-900">Draft, edit, and export AETA project content</h2>
-            <p className="mt-2 text-slate-600">Manage your project updates in a secure admin workflow. Draft changes are stored locally and can be copied as a JSON export for deployment.</p>
+            <p className="mt-2 text-slate-700">Manage your project updates in a secure admin workflow. Draft changes are stored locally and can be copied as a JSON export for deployment.</p>
           </div>
           <div className="flex flex-wrap gap-3">
             <button
               type="button"
               onClick={handleCreateNew}
-              className="rounded-3xl bg-blue-600 px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-blue-500/20 transition hover:bg-blue-700"
+              className="btn-primary"
             >
               + Add new draft project
             </button>
             <button
               type="button"
               onClick={handleCopyData}
-              className="rounded-3xl border border-blue-200 bg-white px-5 py-3 text-sm font-semibold text-blue-700 transition hover:bg-blue-50"
+              className="btn-outline"
             >
               Copy JSON export
             </button>
@@ -195,9 +195,9 @@ export default function AdminProjectEditor() {
           <div className="flex items-center justify-between gap-4">
             <div>
               <h3 className="text-lg font-semibold text-slate-900">Current projects</h3>
-              <p className="text-sm text-slate-600">Select any project to edit its content.</p>
+              <p className="text-sm text-slate-700">Select any project to edit its content.</p>
             </div>
-            <span className="rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-slate-600">
+            <span className="rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-slate-700">
               {projects.length} items
             </span>
           </div>
@@ -215,7 +215,7 @@ export default function AdminProjectEditor() {
                     <p className="font-semibold text-slate-900">{project.title}</p>
                     <p className="text-sm text-slate-600">{project.category}</p>
                   </div>
-                  <span className="text-xs text-slate-500">ID {project.id}</span>
+                  <span className="text-xs text-slate-700">ID {project.id}</span>
                 </div>
                 <p className="mt-3 text-sm text-slate-600 line-clamp-2">{project.summary}</p>
               </button>
@@ -343,7 +343,7 @@ export default function AdminProjectEditor() {
                   ))}
                 </div>
               ) : (
-                <p className="text-sm text-slate-500">No gallery images uploaded yet.</p>
+                <p className="text-sm text-slate-700">No gallery images uploaded yet.</p>
               )}
             </div>
 
@@ -360,7 +360,7 @@ export default function AdminProjectEditor() {
             <button
               type="button"
               onClick={handleSave}
-              className="inline-flex items-center justify-center rounded-3xl bg-blue-600 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-blue-500/20 transition hover:bg-blue-700"
+              className="btn-primary"
             >
               Save draft changes
             </button>

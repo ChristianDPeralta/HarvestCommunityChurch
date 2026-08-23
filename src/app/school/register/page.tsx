@@ -61,7 +61,7 @@ export default function SchoolRegisterPage() {
       <section className="relative bg-cover bg-center text-white py-32 md:py-40" style={{backgroundImage: `linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://res.cloudinary.com/pine-cove/image/upload/t_twitterimagelarge/blog/imported/content/Bible-Open-Leather')`}}>
         <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-4xl md:text-5xl font-bold">Register Your Child</h1>
-          <p className="text-xl md:text-2xl text-slate-100 mt-4">Start their journey to success at Harvest Community School</p>
+          <p className="text-xl md:text-2xl text-white mt-4">Start their journey to success at Harvest Community School</p>
         </div>
       </section>
 
@@ -231,12 +231,12 @@ export default function SchoolRegisterPage() {
               {/* Submit Button */}
               <button
                 type="submit"
-                className="w-full bg-gradient-to-r from-green-600 to-green-700 text-white font-bold py-3 rounded-lg hover:shadow-lg hover:scale-105 transition-all text-lg"
+                className="btn-primary w-full text-lg"
               >
                 Submit Registration
               </button>
 
-              <p className="text-sm text-slate-600 text-center">
+              <p className="text-sm text-slate-700 text-center">
                 * Required fields
               </p>
             </form>
@@ -250,7 +250,7 @@ export default function SchoolRegisterPage() {
             </p>
             <a 
               href="/contact?subject=school-enrollment"
-              className="inline-block bg-purple-600 text-white font-bold px-6 py-3 rounded-lg hover:bg-purple-700 transition"
+              className="btn-outline inline-block text-purple-700 border-purple-600"
             >
               Contact Admissions Team
             </a>
@@ -260,13 +260,13 @@ export default function SchoolRegisterPage() {
           <div className="flex gap-4 justify-center">
             <Link 
               href="/school"
-              className="bg-slate-200 hover:bg-slate-300 text-slate-800 font-bold px-6 py-2 rounded-lg transition"
+              className="btn-outline inline-block"
             >
               ← Back to School
             </Link>
             <Link 
               href="/"
-              className="bg-blue-600 hover:bg-blue-700 text-white font-bold px-6 py-2 rounded-lg transition"
+              className="btn-primary inline-block"
             >
               Go to Home
             </Link>

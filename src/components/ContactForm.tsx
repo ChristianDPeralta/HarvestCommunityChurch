@@ -1,124 +1,49 @@
-'use client';
-
-import { useState } from 'react';
-
 export default function ContactForm() {
-  const [formData, setFormData] = useState({
-    fullName: '',
-    email: '',
-    phoneNumber: '',
-    message: '',
-  });
-  const [isLoading, setIsLoading] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
-  };
-
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setIsLoading(true);
-    setSubmitStatus('idle');
-
-    try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
-
-      if (response.ok) {
-        setSubmitStatus('success');
-        setFormData({ fullName: '', email: '', phoneNumber: '', message: '' });
-        setTimeout(() => setSubmitStatus('idle'), 5000);
-      } else {
-        setSubmitStatus('error');
-        setTimeout(() => setSubmitStatus('idle'), 5000);
-      }
-    } catch (error) {
-      console.error('Error submitting form:', error);
-      setSubmitStatus('error');
-      setTimeout(() => setSubmitStatus('idle'), 5000);
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
   return (
-    <section className="bg-white py-16 md:py-24">
-      <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-3xl md:text-4xl font-bold text-center text-slate-700 mb-12">
-          Get in touch with our team:
-        </h2>
+    <section className="bg-slate-50 py-16 md:py-24">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-12">
+          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-blue-600 mb-3">Contact</p>
+          <h2 className="text-3xl md:text-4xl font-bold text-slate-800">Church leadership and admin contact</h2>
+        </div>
 
-        {submitStatus === 'success' && (
-          <div className="mb-6 p-4 bg-green-100 border border-green-400 text-green-700 rounded">
-            Thank you for your message! We will get back to you soon.
+        <div className="grid md:grid-cols-2 gap-8">
+          <div className="rounded-3xl border border-slate-200 bg-white p-8 shadow-sm">
+            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-slate-500 mb-3">Main Administrator</p>
+            <h3 className="text-2xl font-bold text-slate-800 mb-2">Roger Catalan</h3>
+            <p className="text-base text-blue-700 font-medium mb-5">Administrative Contact</p>
+
+            <ul className="space-y-3 text-slate-700">
+              <li><strong>Address:</strong> 4923 Browndeer Ln., Rancho Palos Verdes, CA 90275</li>
+              <li><strong>Email:</strong> <a href="mailto:rogerbc2000@gmail.com" className="font-semibold text-slate-800 underline decoration-slate-400 underline-offset-4 hover:text-blue-700">rogerbc2000@gmail.com</a></li>
+              <li><strong>Phone:</strong> <a href="tel:+13106190182" className="font-semibold text-slate-800 underline decoration-slate-400 underline-offset-4 hover:text-blue-700">(310) 619-0182</a></li>
+            </ul>
           </div>
-        )}
 
-        {submitStatus === 'error' && (
-          <div className="mb-6 p-4 bg-slate-100 border border-slate-400 text-slate-700 rounded">
-            There was an error submitting your form. Please try again.
+          <div className="rounded-3xl border border-slate-200 bg-white p-8 shadow-sm">
+            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-slate-500 mb-3">Spiritual Leadership</p>
+            <h3 className="text-2xl font-bold text-slate-800 mb-2">Pastor Joseph Vincent Hue Catalan</h3>
+            <p className="text-base text-blue-700 font-medium mb-5">Senior Pastor</p>
+
+            <ul className="space-y-3 text-slate-700">
+              <li><strong>Role:</strong> Church leadership and pastoral guidance</li>
+              <li><strong>Support:</strong> Prayer requests, ministry guidance, and spiritual direction</li>
+              <li><strong>Contact:</strong> Please reach out through Roger Catalan for church coordination and donation inquiries</li>
+            </ul>
           </div>
-        )}
+        </div>
 
-        <form onSubmit={handleSubmit} className="space-y-6">
-          <input
-            type="text"
-            name="fullName"
-            placeholder="FULL NAME"
-            value={formData.fullName}
-            onChange={handleChange}
-            required
-            disabled={isLoading}
-            className="w-full px-6 py-3 border border-slate-300 bg-white text-slate-900 text-base font-medium focus:outline-none focus:border-slate-500 focus:ring-2 focus:ring-blue-200 disabled:opacity-50 placeholder:text-slate-400 placeholder:font-semibold"
-          />
-
-          <input
-            type="email"
-            name="email"
-            placeholder="E-MAIL ADDRESS"
-            value={formData.email}
-            onChange={handleChange}
-            required
-            disabled={isLoading}
-            className="w-full px-6 py-3 border border-amber-300 bg-amber-50 text-slate-900 text-base font-medium focus:outline-none focus:border-amber-700 focus:ring-2 focus:ring-amber-200 disabled:opacity-50 placeholder:text-amber-600 placeholder:font-semibold"
-          />
-
-          <input
-            type="tel"
-            name="phoneNumber"
-            placeholder="PHONE NUMBER"
-            value={formData.phoneNumber}
-            onChange={handleChange}
-            disabled={isLoading}
-            className="w-full px-6 py-3 border border-slate-300 bg-white text-slate-900 text-base font-medium focus:outline-none focus:border-slate-500 focus:ring-2 focus:ring-blue-200 disabled:opacity-50 placeholder:text-slate-400 placeholder:font-semibold"
-          />
-
-          <textarea
-            name="message"
-            placeholder="MESSAGE"
-            value={formData.message}
-            onChange={handleChange}
-            required
-            rows={6}
-            disabled={isLoading}
-            className="w-full px-6 py-3 border border-slate-300 bg-white text-slate-900 text-base font-medium focus:outline-none focus:border-slate-500 focus:ring-2 focus:ring-blue-200 resize-none disabled:opacity-50 placeholder:text-slate-400 placeholder:font-semibold"
-          />
-
-          <button
-            type="submit"
-            disabled={isLoading}
-            className="bg-slate-500 text-white px-8 py-3 font-bold hover:bg-slate-600 transition disabled:opacity-50 disabled:cursor-not-allowed"
-          >
-            {isLoading ? 'SENDING...' : 'SUBMIT'}
-          </button>
-        </form>
+        <div className="mt-10 rounded-[2rem] bg-blue-600 px-6 py-6 text-center shadow-sm">
+          <p className="text-lg font-semibold mb-4 text-black">For donations, ministry partnerships, and church inquiries</p>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
+            <a href="mailto:rogerbc2000@gmail.com?subject=Donation%20Inquiry" className="inline-flex items-center justify-center rounded-full bg-[#f4f4f4] px-5 py-2.5 text-sm font-bold text-black shadow-sm hover:bg-white transition focus:outline-none focus:ring-2 focus:ring-white/80">
+              Email Main Contact
+            </a>
+            <a href="tel:+13106190182" className="inline-flex items-center justify-center rounded-full border border-white bg-transparent px-5 py-2.5 text-sm font-bold text-black hover:bg-blue-500 transition focus:outline-none focus:ring-2 focus:ring-white/80">
+              Call the office
+            </a>
+          </div>
+        </div>
       </div>
     </section>
   );

@@ -33,15 +33,9 @@ export default function HomeConnect() {
     <section id="discover" className="bg-white py-16 md:py-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <p className="text-sm font-semibold uppercase tracking-[0.28em] text-blue-600 mb-4">
-            Explore the site
-          </p>
-          <h2 className="text-3xl md:text-4xl font-bold text-slate-800">
-            Everything is connected from the homepage.
-          </h2>
-          <p className="mt-4 text-slate-600 max-w-2xl mx-auto">
-            Navigate quickly to the stories, programs, school support, outreach projects, and ways to give.
-          </p>
+          <p className="text-sm font-medium text-blue-600 mb-2">Explore the site</p>
+          <h2 style={{color: '#0f172a'}} className="text-3xl md:text-4xl font-bold text-slate-800">Everything is connected from the homepage.</h2>
+          <p className="mt-4 text-slate-700 max-w-2xl mx-auto">Navigate quickly to the stories, programs, school support, outreach projects, and ways to give.</p>
         </div>
 
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -49,16 +43,18 @@ export default function HomeConnect() {
             <Link
               key={section.href}
               href={section.href}
-              className="group block rounded-3xl border border-slate-200 bg-slate-50 p-6 transition hover:-translate-y-1 hover:border-blue-300 hover:bg-white/90"
+              className="group block card-soft transition hover:-translate-y-1 hover:border-blue-300 hover:bg-white/90"
             >
               <div className="text-sm font-semibold uppercase tracking-[0.24em] text-blue-600 mb-3">
                 {section.title}
               </div>
               <p className="text-slate-700 leading-7">{section.description}</p>
-              <span className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-blue-600 transition group-hover:translate-x-1">
-                Learn more
-                <span aria-hidden="true">→</span>
-              </span>
+              <div className="mt-6">
+                <span className="inline-flex items-center gap-2 text-sm font-semibold text-blue-600 transition group-hover:translate-x-1">
+                  Learn more
+                  <span aria-hidden="true">→</span>
+                </span>
+              </div>
             </Link>
           ))}
         </div>

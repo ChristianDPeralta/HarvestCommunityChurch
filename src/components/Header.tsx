@@ -4,13 +4,14 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import { getAdminUsername, signOutAdmin } from '@/components/AdminAuthGuard';
-import { useRouter } from 'next/navigation';
+import { useRouter, usePathname } from 'next/navigation';
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [adminUsername, setAdminUsername] = useState<string | null>(null);
   const [hasHydrated, setHasHydrated] = useState(false);
   const router = useRouter();
+  const pathname = usePathname();
   const isAdminLoggedIn = hasHydrated && Boolean(adminUsername);
 
   useEffect(() => {
@@ -33,49 +34,43 @@ export default function Header() {
   };
 
   return (
-    <header className="sticky top-0 z-50 border-b border-slate-200/80 bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/80 shadow-sm">
-      <nav className="mx-auto flex max-w-7xl flex-col px-4 py-3 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between">
+    <header id="top" className="sticky top-0 z-50 border-b border-slate-200 bg-white shadow-md">
+      <nav className="mx-auto flex max-w-7xl items-center px-4 py-2 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between w-full">
           <div className="flex items-center gap-3">
             {/* Logo */}
-            <Link href="/" className="flex items-center gap-3 rounded-full pr-2 transition hover:opacity-90">
-              <Image 
-                src="/iamfoundation.jpeg" 
-              alt="I AM FOUNDATION" 
-                width={48} 
-                height={48}
-                className="h-12 w-12 rounded-full object-cover shadow-sm"
-              />
+            <Link href="/" className="flex items-center gap-3 transition hover:opacity-95">
+              <Image src="/iamfoundation.jpeg" alt="I Am Foundation" width={44} height={44} className="h-11 w-11 rounded-full object-cover" />
               <div className="leading-tight">
-              <h1 className="text-base font-bold tracking-[0.16em] text-slate-800">I AM FOUNDATION</h1>
-                <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-blue-600">Growing God's Kingdom</p>
+                <span className="text-lg font-semibold text-slate-900">I Am Foundation</span>
+                <p className="text-xs text-slate-700 hidden sm:block">Growing God's Kingdom</p>
               </div>
             </Link>
           </div>
 
           {/* Desktop Navigation */}
           <div className="hidden items-center gap-6 lg:gap-8 md:flex">
-            <Link href="/" className="text-sm font-semibold tracking-wide text-slate-700 transition hover:text-blue-600 relative after:absolute after:bottom-[-6px] after:left-0 after:h-0.5 after:w-0 after:bg-blue-600 after:transition-all hover:after:w-full">
-              HOME
+            <Link href="/" className={`nav-link text-sm transition-colors relative after:block after:absolute after:left-0 after:bottom-0 after:h-0.5 after:bg-blue-600 after:scale-x-0 after:origin-left after:transition-transform hover:after:scale-x-100 ${pathname === '/' ? 'text-blue-700' : ''}`}>
+              Home
             </Link>
-            <Link href="/about" className="text-sm font-semibold tracking-wide text-slate-700 transition hover:text-blue-600 relative after:absolute after:bottom-[-6px] after:left-0 after:h-0.5 after:w-0 after:bg-blue-600 after:transition-all hover:after:w-full">
-              ABOUT
+            <Link href="/about" className={`nav-link text-sm transition-colors relative after:block after:absolute after:left-0 after:bottom-0 after:h-0.5 after:bg-blue-600 after:scale-x-0 after:origin-left after:transition-transform hover:after:scale-x-100 ${pathname === '/about' ? 'text-blue-700' : ''}`}>
+              About
             </Link>
-            <Link href="/services" className="text-sm font-semibold tracking-wide text-slate-700 transition hover:text-blue-600 relative after:absolute after:bottom-[-6px] after:left-0 after:h-0.5 after:w-0 after:bg-blue-600 after:transition-all hover:after:w-full">
-              OUR WORK
+            <Link href="/services" className={`nav-link text-sm transition-colors relative after:block after:absolute after:left-0 after:bottom-0 after:h-0.5 after:bg-blue-600 after:scale-x-0 after:origin-left after:transition-transform hover:after:scale-x-100 ${pathname === '/services' ? 'text-blue-700' : ''}`}>
+              Our work
             </Link>
-            <Link href="/school" className="text-sm font-semibold tracking-wide text-slate-700 transition hover:text-blue-600 relative after:absolute after:bottom-[-6px] after:left-0 after:h-0.5 after:w-0 after:bg-blue-600 after:transition-all hover:after:w-full">
-              SCHOOL
+            <Link href="/school" className={`nav-link text-sm transition-colors relative after:block after:absolute after:left-0 after:bottom-0 after:h-0.5 after:bg-blue-600 after:scale-x-0 after:origin-left after:transition-transform hover:after:scale-x-100 ${pathname === '/school' ? 'text-blue-700' : ''}`}>
+              School
             </Link>
-            <Link href="/aeta-projects" className="text-sm font-semibold tracking-wide text-slate-700 transition hover:text-blue-600 relative after:absolute after:bottom-[-6px] after:left-0 after:h-0.5 after:w-0 after:bg-blue-600 after:transition-all hover:after:w-full">
-              AETA PROJECTS
+            <Link href="/aeta-projects" className={`nav-link text-sm transition-colors relative after:block after:absolute after:left-0 after:bottom-0 after:h-0.5 after:bg-blue-600 after:scale-x-0 after:origin-left after:transition-transform hover:after:scale-x-100 ${pathname === '/aeta-projects' ? 'text-blue-700' : ''}`}>
+              AETA projects
             </Link>
-            <Link href="/contact" className="text-sm font-semibold tracking-wide text-slate-700 transition hover:text-blue-600 relative after:absolute after:bottom-[-6px] after:left-0 after:h-0.5 after:w-0 after:bg-blue-600 after:transition-all hover:after:w-full">
-              CONTACT
+            <Link href="/contact" className={`nav-link text-sm transition-colors relative after:block after:absolute after:left-0 after:bottom-0 after:h-0.5 after:bg-blue-600 after:scale-x-0 after:origin-left after:transition-transform hover:after:scale-x-100 ${pathname === '/contact' ? 'text-blue-700' : ''}`}>
+              Contact
             </Link>
             {isAdminLoggedIn ? (
-              <Link href="/admin" className="text-sm font-semibold tracking-wide text-slate-700 transition hover:text-blue-600 relative after:absolute after:bottom-[-6px] after:left-0 after:h-0.5 after:w-0 after:bg-blue-600 after:transition-all hover:after:w-full">
-                ADMIN ({adminUsername})
+              <Link href="/admin" className={`text-sm font-semibold transition-colors relative after:block after:absolute after:left-0 after:bottom-0 after:h-0.5 after:bg-blue-600 after:scale-x-0 after:origin-left after:transition-transform hover:after:scale-x-100 ${pathname && pathname.startsWith('/admin') ? 'text-blue-700' : 'text-slate-800'}`}>
+                Admin ({adminUsername})
               </Link>
             ) : null}
           </div>
@@ -86,12 +81,12 @@ export default function Header() {
               <button
                 type="button"
                 onClick={handleLogout}
-                className="rounded-full border border-slate-300 bg-white px-4 py-2 text-sm font-semibold text-slate-700 transition hover:bg-slate-100"
+                className="rounded-full border border-slate-300 bg-white px-3 py-1.5 text-sm font-medium text-slate-700 transition hover:bg-slate-100"
               >
                 LOG OUT
               </button>
             ) : null}
-            <Link href="/contact" className="rounded-full bg-gradient-to-r from-blue-600 to-blue-700 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:shadow-md hover:scale-[1.02]">
+            <Link href="/contact?subject=Donation" className="inline-flex items-center gap-2 rounded-md bg-blue-600 text-white px-4 py-2 text-sm font-semibold shadow-sm hover:bg-blue-700">
               Donate
             </Link>
           </div>
@@ -120,39 +115,39 @@ export default function Header() {
         {/* Mobile Navigation */}
         {isMenuOpen && (
           <div className="mt-4 space-y-2 border-t border-slate-200 pt-4 md:hidden">
-            <Link href="/" className="block rounded-xl px-3 py-2 text-sm font-semibold text-slate-700 transition hover:bg-blue-50 hover:text-blue-600">
-              HOME
+                <Link href="/" className="nav-link block rounded-xl px-3 py-2 text-sm font-medium transition hover:bg-blue-50 hover:text-blue-700">
+              Home
             </Link>
-            <Link href="/about" className="block rounded-xl px-3 py-2 text-sm font-semibold text-slate-700 transition hover:bg-blue-50 hover:text-blue-600">
-              ABOUT
+            <Link href="/about" className="nav-link block rounded-xl px-3 py-2 text-sm font-medium transition hover:bg-blue-50 hover:text-blue-700">
+              About
             </Link>
-            <Link href="/services" className="block rounded-xl px-3 py-2 text-sm font-semibold text-slate-700 transition hover:bg-blue-50 hover:text-blue-600">
-              OUR WORK
+            <Link href="/services" className="nav-link block rounded-xl px-3 py-2 text-sm font-medium transition hover:bg-blue-50 hover:text-blue-700">
+              Our work
             </Link>
-            <Link href="/school" className="block rounded-xl px-3 py-2 text-sm font-semibold text-slate-700 transition hover:bg-blue-50 hover:text-blue-600">
-              SCHOOL
+            <Link href="/school" className="nav-link block rounded-xl px-3 py-2 text-sm font-medium transition hover:bg-blue-50 hover:text-blue-700">
+              School
             </Link>
-            <Link href="/aeta-projects" className="block rounded-xl px-3 py-2 text-sm font-semibold text-slate-700 transition hover:bg-blue-50 hover:text-blue-600">
-              AETA PROJECTS
+            <Link href="/aeta-projects" className="nav-link block rounded-xl px-3 py-2 text-sm font-medium transition hover:bg-blue-50 hover:text-blue-700">
+              AETA projects
             </Link>
-            <Link href="/contact" className="block rounded-xl px-3 py-2 text-sm font-semibold text-slate-700 transition hover:bg-blue-50 hover:text-blue-600">
-              CONTACT
+            <Link href="/contact" className="nav-link block rounded-xl px-3 py-2 text-sm font-medium transition hover:bg-blue-50 hover:text-blue-700">
+              Contact
             </Link>
             {isAdminLoggedIn ? (
               <>
-                <Link href="/admin" className="block rounded-xl px-3 py-2 text-sm font-semibold text-slate-700 transition hover:bg-blue-50 hover:text-blue-600">
-                  ADMIN ({adminUsername})
+                <Link href="/admin" className="block rounded-xl px-3 py-2 text-sm font-medium text-slate-700 transition hover:bg-blue-50 hover:text-blue-600">
+                  Admin ({adminUsername})
                 </Link>
                 <button
                   type="button"
                   onClick={handleLogout}
-                  className="mt-2 w-full rounded-full border border-slate-300 bg-white px-4 py-2.5 text-sm font-semibold text-slate-700 transition hover:bg-slate-100"
+                  className="mt-2 w-full rounded-full border border-slate-300 bg-white px-4 py-2.5 text-sm font-medium text-slate-700 transition hover:bg-slate-100"
                 >
-                  LOG OUT
+                  Log out
                 </button>
               </>
             ) : null}
-            <Link href="/contact" className="mt-2 w-full rounded-full bg-gradient-to-r from-blue-600 to-blue-700 px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:shadow-md">
+            <Link href="/contact?subject=Donation" className="mt-2 w-full inline-flex items-center justify-center gap-2 rounded-md bg-blue-600 text-white px-4 py-2 text-sm font-semibold shadow-sm hover:bg-blue-700">
               Donate
             </Link>
           </div>

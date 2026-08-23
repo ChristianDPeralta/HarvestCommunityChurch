@@ -15,62 +15,65 @@ export default function AdminPage() {
   return (
     <AdminAuthGuard>
       <div className="space-y-8">
+        {/* Admin Header */}
         <div className="bg-gradient-to-r from-slate-800 to-slate-900 text-white py-8">
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
             <div>
-              <h1 className="text-4xl font-bold mb-2">Administration Dashboard</h1>
-              <p className="text-slate-300">Manage foundation project content and review published updates.</p>
+              <h1 className="text-4xl font-bold mb-2">Admin Dashboard</h1>
+              <p className="text-white">Secure access to your AETA project management console.</p>
             </div>
             <button
               type="button"
               onClick={handleLogout}
               className="rounded-3xl bg-white/10 px-5 py-3 text-sm font-semibold text-white transition hover:bg-white/20"
             >
-              Sign out
+              Log out of admin
             </button>
           </div>
         </div>
 
+        {/* Main Content */}
         <section className="bg-white">
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-            <div className="grid gap-8 lg:grid-cols-3">
-              <Link href="/admin/editor" className="group lg:col-span-2">
-                <div className="h-full rounded-3xl border border-blue-200 bg-gradient-to-br from-blue-50 to-white p-8 transition hover:border-blue-400 hover:shadow-lg">
-                  <h2 className="text-2xl font-bold text-slate-800 mb-2">Project Content Editor</h2>
-                  <p className="text-slate-700 mb-6">
-                    Update project titles, descriptions, and images before preparing content for deployment.
-                  </p>
-                  <span className="inline-flex items-center rounded-2xl bg-blue-600 px-4 py-2 font-semibold text-white transition group-hover:bg-blue-700">
-                    Open editor
+            <div className="grid md:grid-cols-2 gap-8">
+              {/* Projects Management */}
+              <Link href="/admin/editor" className="group">
+                <div className="bg-gradient-to-br from-blue-50 to-blue-100 border-2 border-blue-200 rounded-lg p-8 hover:shadow-lg hover:border-blue-400 transition">
+                  <div className="text-4xl mb-3">📋</div>
+                  <h2 className="text-2xl font-bold text-slate-800 mb-2">AETA Projects</h2>
+                  <p className="text-slate-700 mb-4">Open the secure hidden editor to manage AETA project content and upload images directly.</p>
+                  <span className="btn-primary inline-block">
+                    Open Admin Editor →
                   </span>
                 </div>
               </Link>
 
-              <Link href="/admin/projects" className="group">
-                <div className="h-full rounded-3xl border border-slate-200 bg-slate-50 p-8 transition hover:border-slate-300 hover:shadow-md">
-                  <h2 className="text-2xl font-bold text-slate-800 mb-2">Published Projects</h2>
-                  <p className="text-slate-700 mb-6">Review the currently published project list and categories.</p>
-                  <span className="inline-flex items-center rounded-2xl border border-slate-300 bg-white px-4 py-2 font-semibold text-slate-700 transition group-hover:bg-slate-100">
-                    View summary
-                  </span>
-                </div>
-              </Link>
+              {/* More Admin Features Coming Soon */}
+              <div className="bg-gradient-to-br from-slate-50 to-slate-100 border-2 border-dashed border-slate-300 rounded-lg p-8 opacity-60">
+                <div className="text-4xl mb-3">🔒</div>
+                <h2 className="text-2xl font-bold text-slate-800 mb-2">Coming Soon</h2>
+                <p className="text-slate-700 mb-4">More secure content management tools are under development.</p>
+                <span className="inline-block rounded px-4 py-2 text-sm font-semibold text-slate-700 cursor-not-allowed bg-slate-100">
+                  Coming Soon
+                </span>
+              </div>
             </div>
 
-            <div className="mt-12 border-t border-slate-200 pt-8">
-              <h3 className="text-xl font-bold text-slate-800 mb-4">Website Links</h3>
-              <div className="flex flex-wrap gap-5">
+            {/* Quick Links */}
+            <div className="mt-12 pt-8 border-t border-slate-200">
+              <h3 className="text-xl font-bold text-slate-800 mb-4">Quick Links</h3>
+              <div className="flex flex-wrap gap-4">
                 <Link
                   href="/"
                   className="text-blue-600 hover:text-blue-700 font-semibold hover:underline"
                 >
-                  Return to homepage
+                  ← Back to Home
                 </Link>
                 <Link
                   href="/aeta-projects"
                   className="text-blue-600 hover:text-blue-700 font-semibold hover:underline"
                 >
-                  View live AETA projects
+                  View AETA Projects
                 </Link>
               </div>
             </div>

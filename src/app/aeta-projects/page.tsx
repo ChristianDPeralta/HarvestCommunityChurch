@@ -7,10 +7,10 @@ export default function AETAProjects() {
   return (
     <div className="space-y-16">
       {/* Hero Section */}
-      <section className="relative bg-cover bg-center text-white py-32 md:py-40" style={{backgroundImage: `linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://res.cloudinary.com/pine-cove/image/upload/t_twitterimagelarge/blog/imported/content/Bible-Open-Leather')`}}>
+      <section className="hero-section relative bg-cover bg-center text-white py-32 md:py-40" style={{backgroundImage: `url('https://res.cloudinary.com/pine-cove/image/upload/t_twitterimagelarge/blog/imported/content/Bible-Open-Leather')`}}>
         <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold">AETA Projects</h1>
-          <p className="text-xl md:text-2xl text-slate-100 mt-4">Empowering Indigenous Communities Through Education & Enterprise</p>
+          <h1 className="page-hero-title">AETA Projects</h1>
+          <p className="page-hero-subtitle mt-4">Empowering Indigenous Communities Through Education & Enterprise</p>
         </div>
       </section>
 
@@ -48,7 +48,7 @@ export default function AETAProjects() {
 
           {/* CTA */}
           <div className="text-center">
-            <a href="/contact" className="inline-block bg-gradient-to-r from-blue-600 to-blue-700 text-white px-8 py-3 font-bold rounded-lg hover:shadow-lg hover:scale-105 transition-all">
+            <a href="/contact" className="btn-primary inline-block">
               Get Involved
             </a>
           </div>
